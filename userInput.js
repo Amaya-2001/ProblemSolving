@@ -18,9 +18,21 @@ class userInput{
 		// console.log(fact);
 		return fact;
 	}
+
+	//get random number
+	get randomNumber(){
+		return this.genrateRandom();
+	}
+
+	//Method for generate random number between o-user input value
+	genrateRandom(){
+		return Math.floor(Math.random() * (this.enterNumber - 0) + 0);
+
+	}
 }
 
-getInput = new userInput(5); //create an object for userInput class
+getInput = new userInput(10); //create an object for userInput class
 
 
 console.log(getInput.factorial);
+console.log(getInput.randomNumber);

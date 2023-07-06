@@ -11,23 +11,29 @@ function getMoneySpent(keyboards, drives, b) {
       sumOfPrice = element + usb;
       //console.log(sumOfPrice);
 
-      sumOfItemPriceArr.push(sumOfPrice);
+      if(sumOfPrice <= b){
+        sumOfItemPriceArr.push(sumOfPrice);
+      }
+      
 
     });
 
   });
 
   //console.log(sumOfItemPriceArr);
+  if(sumOfItemPriceArr.length != 0){
+    let maxItemPrice = Math.max(...sumOfItemPriceArr);
+    //console.log(maxItemPrice);
+    return maxItemPrice;
+  }
+
+  else{
+
+    return -1;
+
+  }
   
-  let maxItemPrice = Math.max(...sumOfItemPriceArr);
-  
-    if(maxItemPrice < b){
-      return maxItemPrice;
-      }
-      else{
-        return -1;
-    } 
-}
+    }
 console.log(getMoneySpent([3, 1], [5, 2, 8], 10));
 console.log(getMoneySpent([1, 2], [7, 6], 10));
 console.log(getMoneySpent([4], [5], 5));

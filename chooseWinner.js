@@ -5,6 +5,7 @@ const readline = require('readline');
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
+  
 });
 
 function chooseWinner(event) {
@@ -29,16 +30,15 @@ function chooseWinner(event) {
     console.log("Congrats!, You are the Winner");
     console.log("Score:", userMarks);
   } 
-  // else {
-  //   console.log("Input is not valid!");
-  // }
 // Ask for input again until "Q" is entered
-	 if (userInput.toUpperCase() !== 'Q') {
+	if (userInput.toUpperCase() !== 'Q') {
       chooseWinner();
     } else {
       rl.close(console.log("Quit the Game!"));
     }
+
   });
+
 }
 
 chooseWinner();

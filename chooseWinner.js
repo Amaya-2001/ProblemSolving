@@ -1,7 +1,14 @@
 const prompt = require("prompt-sync")();
 
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
 function chooseWinner(event) {
-  let userInput = prompt("Enter the dice number:");
+  rl.question("Enter the dice number: ", function(userInput) {
   //console.log(userInput);
   var userValue = parseInt(userInput);
   // console.log("userValue", userValue);
@@ -12,18 +19,26 @@ function chooseWinner(event) {
 
   //loop until keypress
   if (userValue <= randomNum) {
-      AIMarks = AIMarks + 2;
-      console.log("Try again!, AI is the Winner");
-      console.log("Score:", AIMarks);
-    } else if (userValue == randomNum) {
-      console.log("Game is draw!");
-    } else if (userValue >= randomNum) {
-      userMarks = userMarks + 2;
-      console.log("Congrats!, You are the Winner");
-      console.log("Score:", userMarks);
+    AIMarks = AIMarks + 2;
+    console.log("Try again!, AI is the Winner");
+    console.log("Score:", AIMarks);
+  } else if (userValue == randomNum) {
+    console.log("Game is draw!");
+  } else if (userValue >= randomNum) {
+    userMarks = userMarks + 2;
+    console.log("Congrats!, You are the Winner");
+    console.log("Score:", userMarks);
+  } 
+  // else {
+  //   console.log("Input is not valid!");
+  // }
+// Ask for input again until "Q" is entered
+	 if (userInput.toUpperCase() !== 'Q') {
+      chooseWinner();
     } else {
-      console.log("Input is not valid!");
+      rl.close(console.log("Quit the Game!"));
     }
+  });
 }
 
 chooseWinner();
